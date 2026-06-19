@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://parryorbl.github.io/official-index-aiyouxi-com-cn/sitemap.xml

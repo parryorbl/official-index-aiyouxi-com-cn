@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 | 轻量导航 · 稳定入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 0.75rem 1.8rem;
+            border-radius: 48px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid #e5e7eb;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .logo-area {
+            font-size: 1.5rem;
+            font-weight: 550;
+            letter-spacing: 0.02em;
+            color: #1e293b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1e293b;
+            border-bottom-color: #94a3b8;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3.5rem 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #eaecef;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 470;
+            margin-bottom: 1rem;
+            color: #1e293b;
+            letter-spacing: -0.01em;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 700px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #eef2f5;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #334155;
+            border: 1px solid #dde1e6;
+        }
+
+        /* 卡片通用 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e6ec;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #1f2937;
+        }
+
+        .card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .card .emoji-marker {
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        /* 常见说明区 */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.2rem 2.5rem;
+            margin: 2.5rem 0 1.8rem;
+            border: 1px solid #e5e9ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 460;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+            border-left: 4px solid #94a3b8;
+            padding-left: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-answer {
+            color: #5f6b7a;
+            font-size: 0.95rem;
+        }
+
+        .faq-answer a {
+            color: #1f2937;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b0bccb;
+        }
+
+        .faq-answer a:hover {
+            text-decoration-color: #1f2937;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-align: center;
+            border-top: 1px solid #dcdfe4;
+            padding-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                padding: 0.8rem 1.2rem;
+                border-radius: 32px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .hero {
+                padding: 2.2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .faq-section {
+                padding: 1.6rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .card-grid {
+                gap: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="logo-area">爱游戏</div>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero 核心介绍 -->
+    <div class="hero" id="intro">
+        <h1>一种稳定而直接的入口</h1>
+        <p>
+            在众多选择中，有一个地方始终保持着应有的简洁。<a href="https://official-index-aiyouxi.com.cn">爱游戏</a> 
+            本身并不是一个复杂的概念——它更像是一扇门，一种你随时可以回访的页面索引。
+            无论你出于哪种习惯或需求，都可以从这里重新找到熟悉的界面。
+        </p>
+        <span class="tagline">轻量导航 · 不喧哗</span>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="card-grid" id="scenes">
+        <div class="card">
+            <h3><span class="emoji-marker">◇</span> 日常回访</h3>
+            <p>当你想从某个收藏夹或者备忘录里找回曾经用过的页面，往往需要一个不动声色的起点。这个入口不依赖复杂的路径，也不用刻意记忆，它只是被放在那里，安静地等着你。</p>
+        </div>
+        <div class="card">
+            <h3><span class="emoji-marker">◇</span> 信息整理时</h3>
+            <p>如果你恰好需要整理一批链接或者做一组书签，<a href="https://official-index-aiyouxi.com.cn">爱游戏</a> 可以作为参考锚点之一。它的结构很轻，不会占用太多注意力，却能在需要的时候提供稳定的指向。</p>
+        </div>
+        <div class="card">
+            <h3><span class="emoji-marker">◇</span> 习惯性驻足</h3>
+            <p>有些页面没有太多花哨的动效，也没有频繁的更新提示，但它一直在那里。对于一部分人来说，每周一两次点开它已经成了下意识的动作，像打开一个熟悉的抽屉。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-section" id="faq">
+        <h2>常见说明 · 几组简短的话</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">这个页面是干什么的？</div>
+            <div class="faq-answer">它是一个指向 <a href="https://official-index-aiyouxi.com.cn">爱游戏</a> 的轻量导航页，本身不含复杂的后台逻辑，只负责提供一条清晰、稳定的路径。你可以把它当作一个索引或者一个备忘录式的入口。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">为什么强调“稳定入口”？</div>
+            <div class="faq-answer">因为有些页面会因为网络环境、域名解析、本地缓存等因素变得不易触达。这个页面强调的是一种几乎不变的链接结构——只要域名在，它就在。你甚至可以把这一页的地址存在桌面上。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">链接会变吗？</div>
+            <div class="faq-answer">指向 <a href="https://official-index-aiyouxi.com.cn">爱游戏</a> 的 href 是固定的，除非日后出现不可抗的调整，否则它不会频繁变化。这里没有使用任何跳转中间页，直接对应目标地址。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">我需要注册或者登录吗？</div>
+            <div class="faq-answer">不需要。这个页面本身只是信息索引，不涉及账户体系。点击链接后，你会到达对应的目标页面，具体是否需要其他操作取决于目标页面本身的设定。</div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <span>长期维护 · 轻量导航</span>
+    </div>
+</div>
+</body>
+</html>
