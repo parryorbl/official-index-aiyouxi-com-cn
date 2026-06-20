@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>满冠体育 · 卡片介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f2f3f5;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1f2a3a;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .page-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    /* hero 区域 + 主视觉卡片 */
+    .hero-card {
+      background: #ffffff;
+      border: 1px solid #e2e5ea;
+      border-radius: 28px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.2s;
+    }
+    .hero-card:hover {
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #14212e;
+      margin-bottom: 0.5rem;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #4b5a6b;
+      margin-bottom: 1.8rem;
+      border-left: 4px solid #b8c1cc;
+      padding-left: 1rem;
+    }
+    .hero-text {
+      max-width: 760px;
+      font-size: 1rem;
+      color: #2a3b4c;
+    }
+    .hero-text a {
+      color: #1f5070;
+      text-decoration: none;
+      border-bottom: 1px dotted #8f9fae;
+      font-weight: 450;
+    }
+    .hero-text a:hover {
+      border-bottom: 1px solid #1f5070;
+    }
+    /* 双卡片网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .info-card {
+      background: #ffffff;
+      border: 1px solid #e0e4ea;
+      border-radius: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      padding: 1.8rem 1.6rem;
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .info-card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+    .card-title {
+      font-weight: 500;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      border-bottom: 2px solid #eaeef3;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1rem;
+      color: #1b2b3a;
+    }
+    .card-body {
+      font-size: 0.98rem;
+      color: #2f4053;
+    }
+    .card-body ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card-body li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.55rem;
+    }
+    .card-body li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #8f9fae;
+    }
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .tag {
+      background: #f0f2f6;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #2d4054;
+      border: 1px solid #dce2e9;
+    }
+    /* 单列卡片（适合人群 / FAQ 混合） */
+    .single-card {
+      background: #ffffff;
+      border: 1px solid #e2e5ea;
+      border-radius: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      padding: 1.8rem 1.8rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .faq-item {
+      margin-top: 1rem;
+      border-top: 1px dashed #e2e7ed;
+      padding-top: 1rem;
+    }
+    .faq-item:first-of-type {
+      border-top: none;
+      margin-top: 0.2rem;
+      padding-top: 0;
+    }
+    .faq-q {
+      font-weight: 500;
+      color: #1b2b3a;
+      margin-bottom: 0.2rem;
+    }
+    .faq-a {
+      color: #3d5064;
+      font-size: 0.96rem;
+    }
+    .natural-link-sentence {
+      background: #f5f7fa;
+      border-radius: 36px;
+      padding: 1.2rem 1.8rem;
+      margin: 1.8rem 0 0.8rem;
+      border: 1px solid #dce1e8;
+      font-size: 0.98rem;
+      color: #203141;
+      text-align: center;
+    }
+    .natural-link-sentence a {
+      color: #1f5070;
+      text-decoration: none;
+      border-bottom: 1px dotted #8f9fae;
+      font-weight: 450;
+    }
+    .natural-link-sentence a:hover {
+      border-bottom: 1px solid #1f5070;
+    }
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .hero-card {
+        padding: 1.8rem 1.4rem;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .natural-link-sentence {
+        padding: 1rem 1.2rem;
+      }
+    }
+    @media (max-width: 460px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .info-card {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+    /* 细装饰 */
+    hr {
+      border: none;
+      border-top: 1px solid #e0e4ea;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- hero 主视觉 -->
+  <div class="hero-card">
+    <div class="hero-title">满冠体育</div>
+    <div class="hero-sub">信息卡片 · 日常查询与延伸阅读</div>
+    <div class="hero-text">
+      <p>体育资讯、赛事数据与运动知识常常散落在不同页面。整理一份便于对照和翻阅的卡片，把常用的内容线索收拢在一起——从项目介绍到人群参考，再到一些常见疑问的摘要。如果你需要更完整的资料库，可以持续浏览 <a href="https://www-mgsport.com">满冠体育</a> 的各个栏目，那里信息更新也更系统。</p>
+    </div>
+  </div>
+
+  <!-- 双卡片：用途卡片 + 延伸场景 -->
+  <div class="grid-2">
+    <div class="info-card">
+      <div class="card-title">用途卡片 · 查询与对照</div>
+      <div class="card-body">
+        <ul>
+          <li>赛事日程与结果速览 —— 按项目、日期筛选</li>
+          <li>运动项目基础规则与术语解释</li>
+          <li>历史赛事记录与赛季对比</li>
+          <li>训练方法、装备参考与安全提示</li>
+        </ul>
+        <div class="tag-group">
+          <span class="tag">日常查询</span>
+          <span class="tag">对照阅读</span>
+          <span class="tag">延伸查找</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">常见使用场景</div>
+      <div class="card-body">
+        <p>想了解某项运动的背景，或比较不同赛事的赛制差异，又或者在写分析笔记时核对几个关键年份——这一类卡片化的信息更适合快速扫读。另外，不少用户会利用这些条目作为自己整理知识结构的起点，再结合外部资料做二次对照。</p>
+        <p style="margin-top: 0.6rem; color: #486076;">推荐先浏览基础项目概述，再进入专项数据页面。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 适合人群 + FAQ 摘要（合并为单卡片） -->
+  <div class="single-card">
+    <div class="card-title">适合人群 · 延伸参考</div>
+    <div class="card-body">
+      <p style="margin-bottom: 0.8rem;">以下人群或许会觉得这类卡片式信息比较顺手：</p>
+      <ul style="margin-bottom: 1.2rem;">
+        <li>日常关注体育赛事、但不想频繁切换不同app的阅读者</li>
+        <li>需要为写作或简报收集准确基础信息的学生、编辑</li>
+        <li>刚开始接触某一项运动、希望快速建立认知框架的新人</li>
+        <li>喜欢把零散知识整理成笔记或归档的爱好者</li>
+      </ul>
+    </div>
+    <div style="margin-top: 0.2rem;">
+      <div class="faq-item">
+        <div class="faq-q">▸ 这些卡片会覆盖所有运动项目吗？</div>
+        <div class="faq-a">主要聚焦主流项目与常见赛事，特殊冷门项目的信息量相对有限，你可以通过站内搜索或分类索引进一步查找。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">▸ 数据更新的频率大概是？</div>
+        <div class="faq-a">赛季中的核心赛事结果会在结束后24小时内更新；规则、历史类内容按季度核校。遇到大型赛事周期会有临时增补。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">▸ 是否提供下载或打印版本？</div>
+        <div class="faq-a">目前页面内容以在线阅读为主，部分专题资料提供摘要式PDF（标注在对应页面内）。你可以用浏览器打印功能保存卡片页。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落：嵌入“满冠体育”链接 -->
+  <div class="natural-link-sentence">
+    <p>如果你需要更系统地查阅赛事、训练和运动文化相关内容，可以把 <a href="https://www-mgsport.com">满冠体育</a> 当作一个持续更新的参考起点。它的栏目结构偏重分类浏览，便于按兴趣深入。</p>
+  </div>
+
+  <!-- 结尾附注：轻量卡片式说明 -->
+  <div style="margin-top: 1.6rem; background: #f8f9fb; border-radius: 20px; padding: 1.2rem 1.6rem; border: 1px solid #dee3ea; font-size: 0.88rem; color: #3f5569; text-align: center;">
+    本页为介绍卡片 · 内容仅供参考  ·  更多信息可浏览主站
+  </div>
+</div>
+</body>
+</html>
